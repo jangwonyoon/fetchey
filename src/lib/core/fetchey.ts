@@ -62,3 +62,12 @@ export const del = async <T>(url: string): Promise<T> => {
   const data: T = await response.json();
   return data;
 };
+
+const fetchey = {
+  get,
+  post,
+  put,
+  del,
+};
+
+export default fetchey;

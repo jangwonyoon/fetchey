@@ -1,2 +1,2 @@
-export * from '@/lib/core/fetchey';
 export * from '@/lib/messages';
+export { default as fetchey } from './lib/core/fetchey';
