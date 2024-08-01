@@ -10,7 +10,7 @@ export const createFetchey = (method: string) => {
     timeout: number = 5000,
   ): Promise<TData> => {
     const options: RequestInit = {
-      method,
+      method: method,
       headers: {
         'Content-Type': 'application/json',
         ...init?.headers,
