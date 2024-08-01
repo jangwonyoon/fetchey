@@ -1,6 +1,6 @@
 {
   "name": "fetchey",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "fetch를 조금 더 편하게 사용할 수 있는 래퍼: post, get 등으로 명시. get(url).json<T>(), post(url).json<T>() 등과 같이 타입을 지원하는 json 메서드.",
   "main": "dist/index.js",
   "type": "module",
