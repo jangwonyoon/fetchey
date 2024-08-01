@@ -6,8 +6,10 @@
     "declaration": true,
     "outDir": "dist",
     "rootDir": "src",
-    "lib": ["es5", "es6", "dom"]
+    "lib": ["es5", "es6", "dom"],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "test.ts"],
   "exclude": ["node_modules", "dist"]
 }
