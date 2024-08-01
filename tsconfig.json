@@ -1,22 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES6",                         // 컴파일된 코드의 JavaScript 버전 (예: 'ES5', 'ES6', 'ESNext')
-    "module": "commonjs",                    // 모듈 시스템 (예: 'commonjs', 'amd', 'esnext')
-    "strict": true,                          // 엄격한 타입 검사 모드 활성화
-    "esModuleInterop": true,                 // ES 모듈 interop 활성화 (import 디폴트 export를 commonjs 모듈에서 호환 가능)
-    "skipLibCheck": true,                    // 타입 선언 파일의 검사 생략
-    "forceConsistentCasingInFileNames": true,// 파일 이름의 대소문자 일관성 검사
-    "moduleResolution": "node",              // 모듈 해석 방법 (주로 'node' 사용)
-    "outDir": "./dist",                      // 컴파일된 파일의 출력 디렉토리
-    "rootDir": "./src",                      // 입력 파일의 루트 디렉토리
-    "baseUrl": ".",                          // 모듈 해석의 기본 디렉토리
-    "paths": {                               // 모듈 경로 별칭 설정
+    "target": "ES6", // 컴파일된 코드의 JavaScript 버전 (예: 'ES5', 'ES6', 'ESNext')
+    "module": "commonjs", // 모듈 시스템 (예: 'commonjs', 'amd', 'esnext')
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true, // ES 모듈 interop 활성화 (import 디폴트 export를 commonjs 모듈에서 호환 가능)
+    "skipLibCheck": true, // 타입 선언 파일의 검사 생략
+    "forceConsistentCasingInFileNames": true, // 파일 이름의 대소문자 일관성 검사
+    "moduleResolution": "node", // 모듈 해석 방법 (주로 'node' 사용)
+    "outDir": "./dist", // 컴파일된 파일의 출력 디렉토리
+    "rootDir": "./src", // 입력 파일의 루트 디렉토리
+    "baseUrl": ".", // 모듈 해석의 기본 디렉토리
+    "paths": {
+      // 모듈 경로 별칭 설정
       "@/*": ["src/*"]
     },
-    "lib": ["es6", "dom"],                   // 포함할 라이브러리
-    "resolveJsonModule": true,               // JSON 모듈 해석 가능하게 설정
-    "allowSyntheticDefaultImports": true     // 디폴트 import를 허용
+    "lib": ["es6", "dom"], // 포함할 라이브러리
+    "resolveJsonModule": true, // JSON 모듈 해석 가능하게 설정
+    "allowSyntheticDefaultImports": true // 디폴트 import를 허용
   },
-  "include": ["src/**/*"],                   // 포함할 파일 경로 패턴
-  "exclude": ["node_modules", "dist"]        // 제외할 파일 경로 패턴
+  "include": ["src/**/*"], // 포함할 파일 경로 패턴
+  "exclude": ["node_modules", "dist"] // 제외할 파일 경로 패턴
 }

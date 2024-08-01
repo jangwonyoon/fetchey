@@ -5,7 +5,6 @@
   "main": "dist/index.js",
   "source": "src/index.ts",
   "type": "module",
-  "types": "src/types/fetchey.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
@@ -13,6 +12,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jangwonyoon/fetchey.git"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   },
   "keywords": [
     "fetch",
