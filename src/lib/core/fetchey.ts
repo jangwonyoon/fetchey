@@ -1,74 +1,15 @@
-import { DELETE_ERROR, GET_ERROR, POST_ERROR, PUT_ERROR } from '../messages';
-import { Fetchoptions } from '../types/fetchey';
+import { createFetchey } from '.';
 
-export const get = async <TData>(url: string | URL | Request, init?: Fetchoptions): Promise<TData> => {
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`Error fetching data ${response.statusText} - ${GET_ERROR}`);
-  }
-  const data: TData = await response.json();
-  return data;
-};
-
-export const post = async <TData>(url: string | URL, body: any): Promise<TData> => {
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Error posting data ${response.statusText} - ${POST_ERROR}`);
-  }
-
-  const data: TData = await response.json();
-  return data;
-};
-
-export const put = async <TData>(url: string | URL, body: any): Promise<TData> => {
-  const response = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Error putting data ${response.statusText} - ${PUT_ERROR}`);
-  }
-
-  const data: TData = await response.json();
-  return data;
-};
-
-export const del = async <T>(url: string): Promise<T> => {
-  const response = await fetch(url, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  if (!response.ok) {
-    throw new Error(`Error deleting data: ${response.statusText} - ${DELETE_ERROR}`);
-  }
-  const data: T = await response.json();
-  return data;
-};
+const get = createFetchey('GET');
+const post = createFetchey('POST');
+const put = createFetchey('PUT');
+const del = createFetchey('DELETE');
 
 const fetchey = {
   get,
   post,
   put,
-  del,
+  delete: del,
 };
 
 export default fetchey;
