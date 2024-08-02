@@ -32,7 +32,7 @@ Using pnpm:
 $ pnpm add fetchey
 ```
 
-### Usage
+## Usage
 
 **Fetch GET Method use**
 
