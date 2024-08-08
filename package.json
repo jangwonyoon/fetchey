@@ -3,12 +3,13 @@
   "version": "1.0.7",
   "description": "fetch를 조금 더 편하게 사용할 수 있는 래퍼: post, get 등으로 명시. get(url).json<T>(), post(url).json<T>() 등과 같이 타입을 지원하는 json 메서드.",
   "main": "dist/index.js",
-  "type": "module",
   "scripts": {
     "build": "yarn clean && yarn build:tsc && yarn build:js",
     "build:tsc": "yarn tsc --emitDeclarationOnly",
     "build:js": "node build.js",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -35,5 +36,11 @@
     "@types/node": "^22.0.2",
     "esbuild": "^0.23.0",
     "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.4",
+    "ts-node-dev": "^2.0.0"
   }
 }

@@ -1,4 +1,4 @@
-import { createFetchey } from '.';
+import { createFetchey } from './factory';
 
 const get = createFetchey('GET');
 const post = createFetchey('POST');
