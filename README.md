@@ -97,7 +97,7 @@ interface TodoType {
   completed: boolean;
 }
 const getData = async () => {
-  const data = await fetchey.get<TodoType> (url, options);
+  const data = (await fetchey.get) < TodoType > (url, options);
   console.log(data);
   return data;
 };
@@ -110,11 +110,28 @@ getData();
 ```js
 import { fetchey } from "fetchey";
 
-const post = async () => {
-  const data = await fetchey.post(url, body, ,{ });
-  console.log(data);
-  return data;
-};
+const text = await fetchey.get(url, {
+  responseType: "text",
+});
+
+const json = await fetchey.get(url, {
+  responseType: "json",
+});
+
+const arraybuffer = await fetchey.get(url, {
+  responseType: "arraybuffer",
+});
+
+const blob = await fetchey.get(url, {
+  responseType: "blob",
+});
+
+const postJson = fetchey.get(url, {
+  headers: {
+    "Content-Type": "application/json",
+  },
+  responseType: "json",
+});
 ```
 
 **timout**
@@ -123,7 +140,7 @@ const post = async () => {
 import { fetchey } from "fetchey";
 
 const timeout = async () => {
-  const data = await fetchey.get(url, body, { timeout: 5000 });
+  const data = await fetchey.get(url, { timeout: 5000 });
   console.log(data);
   return data;
 };
