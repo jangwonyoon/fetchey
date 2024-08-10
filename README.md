@@ -6,7 +6,8 @@ fetch를 조금 더 편하게 사용할 수 있는 래퍼: post, get 등으로 �
 
 - Wrapping Fetch API
 - Transform request and response data
-- Intercept request and response
+- Supports Timeout
+- Supports Abort
 - Supports the Typescript
 - Supports the Promise API
 
@@ -96,15 +97,24 @@ interface TodoType {
   completed: boolean;
 }
 const getData = async () => {
-  const data =
-    (await fetchey.get) <
-    TodoType >
-    "https://jsonplaceholder.typicode.com/todos/1";
+  const data = (await fetchey.get) < TodoType > (url, options);
   console.log(data);
   return data;
 };
 
 getData();
+```
+
+**fetchey responseText use**
+
+```js
+import { fetchey } from "fetchey";
+
+const post = async () => {
+  const data = await fetchey.post(url, body, ,{ });
+  console.log(data);
+  return data;
+};
 ```
 
 **timout**

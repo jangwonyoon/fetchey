@@ -1,6 +1,31 @@
+import { setup } from "../../../setupTest";
+import fetchey from "../fetchey";
+import { User, users } from "../../../mocks/handlers";
+
+// msw 서버 셋업
+setup();
+
 describe("fetchey Module Unit Test", () => {
   describe("기본 메소드 (GET,POST,PUT,DELETE)를 지원할 수 있어야합니다.", () => {
-    test("GET 메소드를 지원해야합니다.", () => {});
+    describe("GET Method", () => {
+      test("GET 요청을 했을때 데이터를 가져올수 있어야합니다.", async () => {
+        const data = await fetchey.get<User[]>("https://example.com/users");
+        expect(data).toEqual(users);
+      });
+
+      test("GET 요청에 Params를 넘겼을 때 데이터를 가져올 수 있어야합니다.", async () => {
+        const data = await fetchey.get<User[]>("https://example.com/users", {
+          params: {
+            id: "jangwon",
+          },
+        });
+
+        const queryData = users.filter((user) => user.id === "jangwon");
+
+        expect(data).toEqual(queryData);
+      });
+    });
+
     test("POST 메소드를 지원해야합니다.", () => {});
     test("PUT 메소드를 지원해야합니다.", () => {});
     test("DELETE 메소드를 지원해야합니다.", () => {});
