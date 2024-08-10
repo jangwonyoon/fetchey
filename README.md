@@ -41,13 +41,11 @@ $ pnpm add fetchey
 ```js
 import { fetchey } from "fetchey";
 
-const getData = async () => {
+const get = async () => {
   const data = await fetchey.get(url, options);
   console.log(data);
   return data;
 };
-
-getData();
 ```
 
 **fetchey POST Method use**
@@ -60,8 +58,6 @@ const post = async () => {
   console.log(data);
   return data;
 };
-
-getData();
 ```
 
 **fetchey PUT Method use**
@@ -69,13 +65,11 @@ getData();
 ```js
 import { fetchey } from "fetchey";
 
-const getData = async () => {
+const put = async () => {
   const data = await fetchey.put(url, body, options);
   console.log(data);
   return data;
 };
-
-getData();
 ```
 
 **fetchey DELETE Method use**
@@ -83,13 +77,11 @@ getData();
 ```js
 import { fetchey } from "fetchey";
 
-const getData = async () => {
+const delete = async () => {
   const data = await fetchey.delete(url, options);
   console.log(data);
   return data;
 };
-
-getData();
 ```
 
 - Typescript
@@ -113,4 +105,16 @@ const getData = async () => {
 };
 
 getData();
+```
+
+**timout**
+
+```js
+import { fetchey } from "fetchey";
+
+const timeout = async () => {
+  const data = await fetchey.get(url, body, { timeout: 5000 });
+  console.log(data);
+  return data;
+};
 ```
