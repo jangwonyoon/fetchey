@@ -54,7 +54,7 @@ function fetchey<TData>(
 async function fetchey<TData>(
   url: string | URL,
   init: FetchOptions = { responseType: "json" }
-): FetchReponse<TData> {
+): FetchReponse<string | Blob | ArrayBuffer | Awaited<TData>> {
   const {
     responseType = "json",
     timeout,
@@ -120,11 +120,11 @@ async function request<TData>(
     // responseType에 따른 반환값 정의
     switch (responseType) {
       case "arraybuffer":
-        return (await response.arrayBuffer()) as unknown as TData;
+        return (await response.arrayBuffer()) as unknown as ArrayBuffer;
       case "blob":
-        return (await response.blob()) as unknown as TData;
+        return (await response.blob()) as unknown as Blob;
       case "text":
-        return (await response.text()) as unknown as TData;
+        return (await response.text()) as unknown as string;
       case "json":
         return (await response.json()) as TData;
       default:
