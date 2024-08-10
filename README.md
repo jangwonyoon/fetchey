@@ -55,7 +55,14 @@ const get = async () => {
 import { fetchey } from "fetchey";
 
 const post = async () => {
-  const data = await fetchey.post(url, body, options);
+  const user = {
+    id: 1,
+  };
+
+  const data = await fetchey.post(url, {
+    body: user,
+  });
+
   console.log(data);
   return data;
 };
@@ -67,7 +74,13 @@ const post = async () => {
 import { fetchey } from "fetchey";
 
 const put = async () => {
-  const data = await fetchey.put(url, body, options);
+  const user = {
+    id: 1,
+  };
+
+  const data = await fetchey.put(url, {
+    body: user,
+  });
   console.log(data);
   return data;
 };
@@ -85,7 +98,7 @@ const delete = async () => {
 };
 ```
 
-- Typescript
+- **Typescript**
 
 ```js
 import { fetchey } from "fetchey";
@@ -124,13 +137,6 @@ const arraybuffer = await fetchey.get(url, {
 
 const blob = await fetchey.get(url, {
   responseType: "blob",
-});
-
-const postJson = fetchey.get(url, {
-  headers: {
-    "Content-Type": "application/json",
-  },
-  responseType: "json",
 });
 ```
 
