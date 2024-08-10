@@ -134,7 +134,7 @@ const postJson = fetchey.get(url, {
 });
 ```
 
-**timout**
+**Timeout**
 
 ```js
 import { fetchey } from "fetchey";
