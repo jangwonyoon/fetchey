@@ -151,3 +151,13 @@ const timeout = async () => {
   return data;
 };
 ```
+
+**params**
+
+```js
+const data = await fetchey.get<User[]>(url, {
+  params: {
+    id: "jangwon",
+  },
+});
+```
