@@ -109,9 +109,14 @@ fetchey.post = <TData>(
 // PUT 요철을 위한 헬퍼 함수
 fetchey.put = <TData>(
   url: string | URL,
+  body: any,
   init?: FetchOptions
 ): FetchReponse<TData> => {
-  return fetchey<TData>(url, { method: "PUT", ...init });
+  return fetchey<TData>(url, {
+    method: "PUT",
+    body: JSON.stringify(body),
+    ...init,
+  });
 };
 
 // DELETE 요청을 위한 헬퍼 함수
