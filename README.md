@@ -140,7 +140,7 @@ const blob = await fetchey.get(url, {
 });
 ```
 
-**timout**
+**Timeout**
 
 ```js
 import { fetchey } from "fetchey";
