@@ -1,4 +1,4 @@
-import { FetchOptions, FetchReponse } from '../types/fetchey';
+import { FetchOptions, FetchReponse } from "../types/fetchey";
 
 /**
  *
@@ -9,22 +9,40 @@ import { FetchOptions, FetchReponse } from '../types/fetchey';
 // 오버로딩 시그니처 정의
 
 // responseType이 text인 경우
-function fetchey(url: string | URL, init: FetchOptions & { responseType: 'text' }): FetchReponse<string>;
+function fetchey(
+  url: string | URL,
+  init: FetchOptions & { responseType: "text" }
+): FetchReponse<string>;
 
 // responseType이 json인 경우
-function fetchey<TData>(url: string | URL, init: FetchOptions & { responseType: 'json' }): FetchReponse<TData>;
+function fetchey<TData>(
+  url: string | URL,
+  init: FetchOptions & { responseType: "json" }
+): FetchReponse<TData>;
 
 // responseType이 blob인 경우
-function fetchey(url: string | URL, init: FetchOptions & { responseType: 'blob' }): FetchReponse<Blob>;
+function fetchey(
+  url: string | URL,
+  init: FetchOptions & { responseType: "blob" }
+): FetchReponse<Blob>;
 
 // responseType이 arraybuffer인 경우
-function fetchey(url: string | URL, init: FetchOptions & { responseType: 'arraybuffer' }): FetchReponse<ArrayBuffer>;
+function fetchey(
+  url: string | URL,
+  init: FetchOptions & { responseType: "arraybuffer" }
+): FetchReponse<ArrayBuffer>;
 
 // default
-function fetchey<TData>(url: string | URL, init: FetchOptions): FetchReponse<any>;
+function fetchey<TData>(
+  url: string | URL,
+  init: FetchOptions
+): FetchReponse<any>;
 
-async function fetchey<TData>(url: string | URL, init: FetchOptions = { responseType: 'json' }): FetchReponse<TData> {
-  const { responseType = 'json', timeout, abortable, ...rest } = init;
+async function fetchey<TData>(
+  url: string | URL,
+  init: FetchOptions = { responseType: "json" }
+): FetchReponse<TData> {
+  const { responseType = "json", timeout, abortable, ...rest } = init;
 
   // abortㅇ
   let controller: AbortController | undefined;
@@ -53,13 +71,13 @@ async function fetchey<TData>(url: string | URL, init: FetchOptions = { response
 
     // reponse타입에 따른 반환값 정의
     switch (responseType) {
-      case 'arraybuffer':
+      case "arraybuffer":
         return await res.arrayBuffer();
-      case 'blob':
+      case "blob":
         return await res.blob();
-      case 'text':
+      case "text":
         return await res.text();
-      case 'json':
+      case "json":
         return await res.json();
       default:
         return await res.json();
@@ -68,23 +86,40 @@ async function fetchey<TData>(url: string | URL, init: FetchOptions = { response
 }
 
 // GET 요청을 위한 헬퍼 함수
-fetchey.get = <TData>(url: string | URL, init?: FetchOptions): FetchReponse<TData> => {
-  return fetchey<TData>(url, { method: 'GET', ...init });
+fetchey.get = <TData>(
+  url: string | URL,
+  init?: FetchOptions
+): FetchReponse<TData> => {
+  return fetchey<TData>(url, { method: "GET", ...init });
 };
 
 // POST 요청을 위한 헬퍼 함수
-fetchey.post = <TData>(url: string | URL, init?: FetchOptions): FetchReponse<TData> => {
-  return fetchey<TData>(url, { method: 'POST', ...init });
+fetchey.post = <TData>(
+  url: string | URL,
+  body: any,
+  init?: FetchOptions
+): FetchReponse<TData> => {
+  return fetchey<TData>(url, {
+    method: "POST",
+    body: JSON.stringify(body),
+    ...init,
+  });
 };
 
 // PUT 요철을 위한 헬퍼 함수
-fetchey.put = <TData>(url: string | URL, init?: FetchOptions): FetchReponse<TData> => {
-  return fetchey<TData>(url, { method: 'PUT', ...init });
+fetchey.put = <TData>(
+  url: string | URL,
+  init?: FetchOptions
+): FetchReponse<TData> => {
+  return fetchey<TData>(url, { method: "PUT", ...init });
 };
 
 // DELETE 요청을 위한 헬퍼 함수
-fetchey.delete = <TData>(url: string | URL, init?: FetchOptions): FetchReponse<TData> => {
-  return fetchey<TData>(url, { method: 'DELETE', ...init });
+fetchey.delete = <TData>(
+  url: string | URL,
+  init?: FetchOptions
+): FetchReponse<TData> => {
+  return fetchey<TData>(url, { method: "DELETE", ...init });
 };
 
 export default fetchey;

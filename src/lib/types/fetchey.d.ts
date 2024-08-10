@@ -3,3 +3,5 @@ export interface FetchOptions extends RequestInit {
   responseType?: 'text' | 'arraybuffer' | 'blob' | 'json';
   timeout?: number;
 }
+
+export type FetchReponse<TData> = Promise<TData>;

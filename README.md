@@ -34,15 +34,57 @@ $ pnpm add fetchey
 
 ## Usage
 
-**Fetch GET Method use**
+**fetchey GET Method use**
 
 - Javascript
 
 ```js
-import { fetchey } from 'fetchey';
+import { fetchey } from "fetchey";
 
 const getData = async () => {
-  const data = await fetchey.get('https://jsonplaceholder.typicode.com/todos/1');
+  const data = await fetchey.get(url, options);
+  console.log(data);
+  return data;
+};
+
+getData();
+```
+
+**fetchey POST Method use**
+
+```js
+import { fetchey } from "fetchey";
+
+const post = async () => {
+  const data = await fetchey.post(url, body, options);
+  console.log(data);
+  return data;
+};
+
+getData();
+```
+
+**fetchey PUT Method use**
+
+```js
+import { fetchey } from "fetchey";
+
+const getData = async () => {
+  const data = await fetchey.put(url, body, options);
+  console.log(data);
+  return data;
+};
+
+getData();
+```
+
+**fetchey DELETE Method use**
+
+```js
+import { fetchey } from "fetchey";
+
+const getData = async () => {
+  const data = await fetchey.delete(url, options);
   console.log(data);
   return data;
 };
@@ -53,7 +95,7 @@ getData();
 - Typescript
 
 ```js
-import { fetchey } from 'fetchey';
+import { fetchey } from "fetchey";
 
 interface TodoType {
   userId: number;
@@ -62,7 +104,10 @@ interface TodoType {
   completed: boolean;
 }
 const getData = async () => {
-  const data = await fetchey.get<TodoType>('https://jsonplaceholder.typicode.com/todos/1');
+  const data =
+    (await fetchey.get) <
+    TodoType >
+    "https://jsonplaceholder.typicode.com/todos/1";
   console.log(data);
   return data;
 };
