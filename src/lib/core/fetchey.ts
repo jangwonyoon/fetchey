@@ -3,6 +3,7 @@ export interface FetchOptions extends RequestInit {
   responseType?: "text" | "arraybuffer" | "blob" | "json";
   timeout?: number;
   params?: Record<string, string | number | undefined>;
+  body?: any;
 }
 
 export type FetchReponse<TData> = Promise<TData>;
@@ -54,7 +55,15 @@ async function fetchey<TData>(
   url: string | URL,
   init: FetchOptions = { responseType: "json" }
 ): FetchReponse<TData> {
-  const { responseType = "json", timeout, abortable, params, ...rest } = init;
+  const {
+    responseType = "json",
+    timeout,
+    abortable,
+    params,
+    body,
+    headers,
+    ...rest
+  } = init;
 
   // abort
   let controller: AbortController | undefined;
@@ -84,7 +93,14 @@ async function fetchey<TData>(
     url = urlObj.toString();
   }
 
-  return await request<TData>(url, rest, responseType);
+  return await request<TData>(
+    url,
+    {
+      body: JSON.stringify(body),
+      ...rest,
+    },
+    responseType
+  );
 }
 
 async function request<TData>(
