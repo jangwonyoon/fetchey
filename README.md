@@ -97,7 +97,7 @@ interface TodoType {
   completed: boolean;
 }
 const getData = async () => {
-  const data = (await fetchey.get) < TodoType > (url, options);
+  const data = await fetchey.get<TodoType> (url, options);
   console.log(data);
   return data;
 };
